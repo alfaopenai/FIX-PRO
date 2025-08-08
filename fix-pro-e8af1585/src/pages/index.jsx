@@ -1,36 +1,26 @@
-import React, { Suspense } from "react";
 import Layout from "./Layout.jsx";
 import { createPageUrl } from "@/utils";
-const Dashboard = React.lazy(() => import("./Dashboard"));
-const Customers = React.lazy(() => import("./Customers"));
-const Messages = React.lazy(() => import("./Messages"));
-const Deliveries = React.lazy(() => import("./Deliveries"));
-const Settings = React.lazy(() => import("./Settings"));
-const Analytics = React.lazy(() => import("./Analytics"));
-const Schedule = React.lazy(() => import("./Schedule"));
-const SalesManager = React.lazy(() => import("./SalesManager"));
-import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
-import { AnimatePresence, motion } from "framer-motion";
-import { pageTransition, slideX } from "@/lib/motionPresets";
+import Dashboard from "./Dashboard";
+import Customers from "./Customers";
+import Messages from "./Messages";
+import Deliveries from "./Deliveries";
+import Settings from "./Settings";
+import Analytics from "./Analytics";
+import Schedule from "./Schedule";
+import SalesManager from "./SalesManager";
+import { HashRouter as Router, Route, Routes, useLocation, Navigate } from 'react-router-dom';
+import { motion } from "framer-motion";
+import { pageTransition } from "@/lib/motionPresets";
 
 const PAGES = {
-    
-    Dashboard: Dashboard,
-    
-    Customers: Customers,
-    
-    Messages: Messages,
-    
-    Deliveries: Deliveries,
-    
-    Analytics: Analytics,
-    
-    Schedule: Schedule,
-    
-    Settings: Settings,
-    
-    SalesManager: SalesManager,
-    
+    Dashboard,
+    Customers,
+    Messages,
+    Deliveries,
+    Analytics,
+    Schedule,
+    Settings,
+    SalesManager,
 }
 
 function _getCurrentPage(url) {
@@ -63,19 +53,18 @@ function PagesContent() {
                   variants={pageTransition}
                   className="w-full"
                 >
-                  <Suspense fallback={<div className="p-8 text-gray-400">טוען...</div>}>
-                    <Routes location={location}>            
-                      <Route path="/" element={<Dashboard />} />
-                      <Route path={createPageUrl("Dashboard")} element={<Dashboard />} />
-                      <Route path={createPageUrl("Customers")} element={<Customers />} />
-                      <Route path={createPageUrl("Messages")} element={<Messages />} />
-                      <Route path={createPageUrl("Deliveries")} element={<Deliveries />} />
-                      <Route path={createPageUrl("Analytics")} element={<Analytics />} />
-                      <Route path={createPageUrl("Schedule")} element={<Schedule />} />
-                      <Route path={createPageUrl("Settings")} element={<Settings />} />
-                      <Route path={createPageUrl("SalesManager")} element={<SalesManager />} />
-                    </Routes>
-                  </Suspense>
+                  <Routes location={location}>
+                    <Route path="/" element={<Dashboard />} />
+                    <Route path={createPageUrl("Dashboard")} element={<Dashboard />} />
+                    <Route path={createPageUrl("Customers")} element={<Customers />} />
+                    <Route path={createPageUrl("Messages")} element={<Messages />} />
+                    <Route path={createPageUrl("Deliveries")} element={<Deliveries />} />
+                    <Route path={createPageUrl("Analytics")} element={<Analytics />} />
+                    <Route path={createPageUrl("Schedule")} element={<Schedule />} />
+                    <Route path={createPageUrl("Settings")} element={<Settings />} />
+                    <Route path={createPageUrl("SalesManager")} element={<SalesManager />} />
+                    <Route path="*" element={<Navigate to="/" replace />} />
+                  </Routes>
                 </motion.div>
             </>
         </Layout>
