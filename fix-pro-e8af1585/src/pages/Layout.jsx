@@ -58,11 +58,7 @@ const navigationItems = [
     url: createPageUrl("Settings"),
     icon: Settings,
   },
-  {
-    title: "מנהל מכירות",
-    url: createPageUrl("SalesManager"),
-    icon: BarChart3,
-  },
+  // הוסר: מנהל מכירות (SalesManager)
 ];
 
 export default function Layout({ children, currentPageName }) {
@@ -170,22 +166,17 @@ export default function Layout({ children, currentPageName }) {
                       <Bell className="w-5 h-5" />
                     </Button>
                   </motion.div>
-                  <Link to={createPageUrl("SalesManager")}> 
-                    <motion.div 
-                      className="flex items-center gap-3 cursor-pointer"
-                      whileHover={{ scale: 1.02 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <Avatar className="w-9 h-9 border-2 border-gray-700">
-                        <AvatarImage src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face" />
-                        <AvatarFallback>JM</AvatarFallback>
-                      </Avatar>
-                      <div>
-                        <div className="font-semibold text-white text-sm">Jack Marley</div>
-                        <div className="text-xs text-gray-400">Sales manager</div>
-                      </div>
-                    </motion.div>
-                  </Link>
+                  {/* הוסר קישור ל-SalesManager מהכרטיס פרופיל */}
+                  <div className="flex items-center gap-3">
+                    <Avatar className="w-9 h-9 border-2 border-gray-700">
+                      <AvatarImage src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face" />
+                      <AvatarFallback>JM</AvatarFallback>
+                    </Avatar>
+                    <div>
+                      <div className="font-semibold text-white text-sm">Jack Marley</div>
+                      <div className="text-xs text-gray-400">Sales manager</div>
+                    </div>
+                  </div>
                 </motion.div>
               </div>
             </div>
