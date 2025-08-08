@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend } from 'recharts';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -70,7 +71,7 @@ export default function SideStats() {
       <Card className="bg-gray-800/50 border border-gray-700/80 rounded-2xl shadow-lg">
           <CardHeader className="flex flex-row items-center justify-between">
               <CardTitle className="text-lg font-semibold text-white">ביקורות אחרונות</CardTitle>
-              <a href="#" className="text-sm text-gray-400 hover:text-white">הצג הכל</a>
+              <Link to="#" className="text-sm text-gray-400 hover:text-white">הצג הכל</Link>
           </CardHeader>
           <CardContent>
               {reviews.map((review, index) => (
